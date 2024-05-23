@@ -1,0 +1,17 @@
+<% layout('/layouts/boilerplate') -%>
+
+<div>
+    <h4><%= listing["title"] %></h4>
+    <img src='<%= listing["image"]["url"] %>' alt="" style="height: 200px;">
+    <p>Price: &#8377; <%= listing["price"].toLocaleString("en-IN") %></p>
+    <p>location: <%= listing["location"] %></p>
+    <p>country: <%= listing["country"] %></p>
+
+    <form action="/listings/<%= listing["id"] %>/edit" method="get">
+        <button type="submit">Edit & Update</button>
+    </form>
+
+    <form action="/listings/<%= listing["id"] %>?_method=DELETE" method="post">
+        <button type="submit">Delete Listing</button>
+    </form>
+</div>

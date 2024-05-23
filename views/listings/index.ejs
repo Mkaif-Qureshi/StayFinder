@@ -1,0 +1,19 @@
+<% layout('/layouts/boilerplate') -%>
+
+<form action="/listings/new" method="get">
+    <button type="submit">NEW</button>
+</form>
+
+<table>
+    
+    <% for(let i=0; i<listings.length; i++){ %>
+        <tr>
+            <td>
+                <a href='/listings/<%= listings[i]["id"] %>'>
+                    <%= listings[i]["title"] %>
+                </a>
+            </td>
+            
+        </tr>
+    <% } %>
+</table>
