@@ -99,7 +99,7 @@ body{
 
 /* new */
 
-.add-btn{
+.add-btn, .update-btn{
     background-color:  #fe424d !important;
     border: none !important;
 }
