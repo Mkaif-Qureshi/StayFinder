@@ -1,9 +1,8 @@
 <% layout('/layouts/boilerplate') -%>
-
 <!-- <form action="/listings/new" method="get">
     <button type="submit">NEW</button>
 </form> -->
-
+<h3>All Listings</h3>
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
     <% for(let i=0; i<listings.length; i++){ %>
         <a href='/listings/<%= listings[i]["id"] %>' class="listing-link">
