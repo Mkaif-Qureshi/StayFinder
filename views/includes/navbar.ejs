@@ -1,3 +1,26 @@
+<style>
+  #search-btn{
+    border-radius: 2rem;
+    border: 1px solid #fe424d;;
+    color:#fe424d;
+  }
+  #search-btn:hover{
+    border: 1px solid white;
+    background-color:#fe424d ;
+    color: white;
+  }
+  #search-btn i{
+    display: inline;
+    margin-right: 2px;
+  }
+  .search-input{
+    border-radius: 2rem;
+    padding: 0 2rem;
+    font-size: 0.8rem;
+  }
+
+</style>
+
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="/"><i class="fa-regular fa-compass fa-lg"></i></a>
@@ -10,6 +33,14 @@
             <a class="nav-link" href="/listings">Explore</a>
           </li>
         </ul>
+
+        <div class="navbar-nav ms-auto">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 search-input" type="search" placeholder="Search destinations" >
+            <button class="btn" type="submit" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i>search</button>
+          </form>
+        </div>
+
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link" href="/listings/new">Add New Listing</a>
