@@ -10,7 +10,10 @@ let listingSchema = new Schema({
     description :{
         type: String,
     },
-    image : Object,
+    image : {
+        url : String,
+        filename : String
+    },
     price :{
         type: Number,
     },

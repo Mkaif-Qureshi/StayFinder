@@ -6,7 +6,7 @@
             <h3>Edit Listing</h3>
             <br>
             <form action="/listings/<%= listing.id %>/edit?_method=PUT" method="post" novalidate
-                class="needs-validation">
+                class="needs-validation" enctype="multipart/form-data">
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
@@ -20,20 +20,27 @@
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     <textarea name="listing[description]" class="form-control" required>
-                <%= listing.description %>
-                </textarea>
-                <div class="invalid-feedback">
-                    Please provide a valid description.
-                </div>
+                        <%= listing.description %>
+                    </textarea>
+                    <div class="invalid-feedback">
+                        Please provide a valid description.
+                    </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="image" class="form-label">Image URL</label>
-                    <input type="url" name="listing[image][url]" placeholder="Enter Image URL"
-                        value='<%= listing["image"]["url"]%>' class="form-control" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid Image URL.
-                        </div>
+                    <label for="description" class="form-label">original image</label>
+                    <br>
+                    <img src="<%= originalImage %> " alt="">
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Upload New Image</label>
+                    <input 
+                        type="file" 
+                        name="listing[image][url]" 
+                        placeholder="Enter Image URL"
+                        class="form-control" 
+                    >
                 </div>
 
                 <div class="row">
