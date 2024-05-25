@@ -5,51 +5,21 @@ const WrapAsync = require('../utils/WrapAsync');
 const ExpressError = require('../utils/ExpressError');
 const passport = require('passport');
 const {saveRedirectUrl} = require("../middleware.js");
+const userController = require('../controllers/users.js');
 
-router.get('/signup' , (req, res) => {
-    res.render('users/signup.ejs');
-})
+router.get('/signup' , userController.signupPage);
 
-router.post('/signup' , WrapAsync(async(req, res) => {
-    try {
-        let {username, email, password} = req.body;
-        const newUser = new User({email, username});
-
-        const registeredUser = await User.register(newUser, password);
-        console.log(registeredUser);
-
-        //login after signup
-        req.login(registeredUser, (err) => {
-            if(err){ return next(err); }
-            req.flash("success", "Welcome to StayFinder");
-            res.redirect('/listings');
-        });
-
-    } catch (error) {
-        req.flash("error", error.message);
-        res.redirect("/signup");
-    }
-}));
+router.post('/signup' , WrapAsync(userController.signupUser));
 
 
-router.get('/login', (req, res) => {
-    res.render('./users/login.ejs')
-})
+router.get('/login', userController.loginPage);
 
-router.post('/login', saveRedirectUrl, passport.authenticate('local', { failureRedirect: '/login', failureFlash : true, }), async(req, res) => {
-    req.flash("success", "Welcome to StayFinder! You are logged in");
-    res.redirect(res.locals.redirectUrl ?? '/listings');
-})
+router.post('/login', 
+    saveRedirectUrl, 
+    passport.authenticate('local', { failureRedirect: '/login', failureFlash : true, }), 
+    userController.loginUser
+);
 
-router.get('/logout', (req, res) => {
-    req.logout((err) => {
-        if(err){
-            return next(err);
-        }
-        req.flash("success", "You are logged out!");
-        res.redirect("/listings");
-    })
-})
-
+router.get('/logout', userController.logout);
 
 module.exports = router;
